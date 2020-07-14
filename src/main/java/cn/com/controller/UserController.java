@@ -16,7 +16,7 @@ public class UserController {
     @Resource
     private UserInfoService userInfoService;
 
-    @RequestMapping(value = "/find",method = RequestMethod.POST)
+    @RequestMapping(value = "/find")
     public String find(UserInfo userInfo, ModelMap modelMap){
         List<UserInfo> list = userInfoService.findAll(userInfo);
         modelMap.addAttribute("list",list);
@@ -29,7 +29,7 @@ public class UserController {
             UserInfo user = userInfoService.selectByPrimaryKey(id);
             modelMap.addAttribute("user",user);
         }
-        return "save";
+        return "/save.jsp";
     }
 
     @RequestMapping(value = "/save",method = RequestMethod.POST)
